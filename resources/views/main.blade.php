@@ -28,20 +28,19 @@
 <link href="{{ asset('material-theme/css/light.css') }}" rel="stylesheet">
 <link href="{{ asset('material-theme/css/dark.css') }}" rel="stylesheet">
 
-
-
 {{-- Navbar used throughout --}}
 <nav class="navbar">
-    <a href="/" title="Delete">Home</a>
-    <a href="{{ route('keyboardselect') }}" title="Delete">Keyboards</a>
-    <a>Stores</a>
+    {{-- The if in the class is to show the current selected page --}}
+    <a href="/" title="Delete"><p class="@if(Route::currentRouteName() == '') active @endif">Home</p></a>
+    <a href="{{ route('keyboardselect') }}" title="Delete"><p class="@if(Route::currentRouteName() == 'keyboardselect') active @endif">Keyboards</p></a>
+    <a><p class="@if(Route::currentRouteName() == 'keyboardselect') active @endif">Stores</p></a>
     <md-filled-icon-button id="toggleTheme">
         <md-icon class="material-symbols-outlined">dark_mode</md-icon>
     </md-filled-icon-button>
 </nav>
 
 {{-- container whose content changes throughout each route --}}
-<body>
+<body onload="onLoad()">
     <div class="mainContainer">
         @yield('content')
         {{-- <h1 class="md-typescale-display-medium">Hello Material!</h1>

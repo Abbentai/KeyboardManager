@@ -7,7 +7,7 @@ body{
 /* Navbar */
 
 .navbar{
-    background-color: var(--md-sys-color-on-primary-fixed-variant);
+    background-color: var(--md-sys-color-primary-container);
     box-shadow: 0px 5px 10px 1px var(--md-sys-color-inverse-surface);
     min-height: 80px;
     height: 5vh;
@@ -20,6 +20,7 @@ body{
 .navbar a{
     font-size: 20pt;
     font-weight: bold;
+    font-style: normal;
     color: var(--md-sys-color-outline);
 }
 
@@ -27,6 +28,7 @@ body{
     color: var(--md-sys-color-outline-variant);
     cursor: pointer;
     scale: 103%;
+    filter: invert();
 }
 
 
@@ -41,6 +43,7 @@ body{
 
 .title{
     font-size: 45pt;
+    color: var(--text);
     font-weight: bold;
     text-align: center;
 }
@@ -50,6 +53,13 @@ body{
     color: var(--text);
     text-align: center;
 
+}
+
+.active{
+    font-weight: bolder;
+    color: var(--md-sys-color-outline-variant);
+    filter: invert();
+    text-decoration: none;
 }
 
 .opener{
