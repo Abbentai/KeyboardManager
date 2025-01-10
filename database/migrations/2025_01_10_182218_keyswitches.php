@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('keyswitches', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->id();
             $table->string('name');
-            $table->integer('actuation_force');
-            $table->integer('travel_distance');
+            $table->decimal('actuation_force', 8, 2);
+            $table->decimal('travel_distance', 8, 2);
             $table->string('type');
             $table->boolean('prelubed');
+            $table->integer('quantity');
+            $table->decimal('price', 8, 2);
+            $table->foreignId('store_id')->constrained();
             $table->timestamps();
         });
     }

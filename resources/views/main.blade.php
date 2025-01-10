@@ -30,10 +30,12 @@
 
 {{-- Navbar used throughout --}}
 <nav class="navbar">
+    <md-elevation></md-elevation>
+
     {{-- The if in the class is to show the current selected page --}}
     <a href="/" title="Delete"><p class="@if(Route::currentRouteName() == '') active @endif">Home</p></a>
     <a href="{{ route('keyboardselect') }}" title="Delete"><p class="@if(Route::currentRouteName() == 'keyboardselect') active @endif">Keyboards</p></a>
-    <a><p class="@if(Route::currentRouteName() == 'keyboardselect') active @endif">Stores</p></a>
+    <a><p class="@if(Route::currentRouteName() == 'stores') active @endif">Stores</p></a>
     <md-filled-icon-button id="toggleTheme">
         <md-icon class="material-symbols-outlined">dark_mode</md-icon>
     </md-filled-icon-button>
