@@ -29,13 +29,13 @@
 <link href="{{ asset('material-theme/css/dark.css') }}" rel="stylesheet">
 
 {{-- Navbar used throughout --}}
-<nav class="navbar">
+<nav class="navbar highelevation">
     <md-elevation></md-elevation>
 
     {{-- The if in the class is to show the current selected page --}}
     <a href="/" title="Delete"><p class="@if(Route::currentRouteName() == '') active @endif">Home</p></a>
-    <a href="{{ route('keyboardselect') }}" title="Delete"><p class="@if(Route::currentRouteName() == 'keyboardselect') active @endif">Keyboards</p></a>
-    <a><p class="@if(Route::currentRouteName() == 'stores') active @endif">Stores</p></a>
+    <a href="{{ route('keyboards.index') }}" title="Delete"><p class="@if(Route::currentRouteName() == 'keyboards.index') active @endif">Keyboards</p></a>
+    <a href="{{ route('stores.index') }}"><p class="@if(Route::currentRouteName() == 'stores.index') active @endif">Stores</p></a>
     <md-filled-icon-button id="toggleTheme">
         <md-icon class="material-symbols-outlined">dark_mode</md-icon>
     </md-filled-icon-button>

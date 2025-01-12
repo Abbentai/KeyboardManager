@@ -20,7 +20,7 @@
 
             <h3>Price: €{{ $keyswitch->price }}</h3>
             <h3>Store: {{ $keyswitch->store->name }}</h3>
-            <h3>Store: <a href="https://{{ $keyswitch->store->url }}">{{ $keyswitch->store->url }}</a></h3>
+            <h3>Store: <a href="{{ $keyswitch->store->url }}">{{ $keyswitch->store->url }}</a></h3>
 
         </div>
     @endforeach

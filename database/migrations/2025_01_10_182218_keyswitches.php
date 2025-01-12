@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('prelubed');
             $table->integer('quantity');
             $table->decimal('price', 8, 2);
-            $table->foreignId('store_id')->constrained();
+            $table->foreignId('store_id')->constrained()->onDelete('cascade');;
             $table->timestamps();
         });
     }

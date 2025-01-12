@@ -22,3 +22,8 @@ document.getElementById("toggleTheme").addEventListener("click", () => {
     }
     document.documentElement.classList.toggle("dark");
 });
+
+//Navigates to a particular url, the whole url must be given via named routue and not part of that route
+function navigateTo(url){
+    window.location.href = url;
+}

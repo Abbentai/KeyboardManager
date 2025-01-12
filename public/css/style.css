@@ -17,7 +17,6 @@ body{
     gap: 1.5vw;
 
     position: relative;
-    --md-elevation-level: 5;
 }
 
 .navbar a{
@@ -31,7 +30,7 @@ body{
     color: var(--md-sys-color-outline-variant);
     cursor: pointer;
     scale: 103%;
-    filter: invert();
+    filter: invert(0.4);
 }
 
 
@@ -41,21 +40,29 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 2vh;
     gap: 20px;
 }
 
 /* Divs */
 .card{
-    width: 40vw;
+    width: 39.5vw;
+    min-width: 300px;
     border-radius: 10px;
     background-color: var(--md-sys-color-secondary-container);
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0.5vw;
 
     /* This is for the elevation property for material web */
     position: relative;
     --md-elevation-level: 3;
+}
+
+.cardsmall{
+    width: 20vw;
+    min-width: 250px;
 }
 
 .opener{
@@ -65,6 +72,10 @@ body{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+}
+
+.cardTextBox{
+    max-width: 70%;
 }
 
 
@@ -87,6 +98,12 @@ h1, h2, h3, h4, p, a, span{
 
 }
 
+.subsubtitle{
+    font-size: 20pt;
+    color: var(--text);
+    text-align: center;
+}
+
 .active{
     font-weight: bolder;
     color: var(--md-sys-color-outline-variant);
@@ -94,10 +111,58 @@ h1, h2, h3, h4, p, a, span{
     text-decoration: none;
 }
 
+
+/* Buttons */
+.fabalign{
+    position: fixed;
+    top: 88%;
+    right: 2%;
+}
+
 /* Misc */
+
+.icon{
+    width: 48px;
+    height: 48px;
+    fill: var(--text);
+}
+
+.iconstroke{
+    width: 48px;
+    height: 48px;
+    stroke: var(--text);
+}
 
 .checkbox{
     display: flex;
     align-items: center;
-    gap: 10px
+    gap: 10px;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+}
+
+.flexcolumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.flexrow{
+    display: flex;
+    flex-direction: row;
+}
+
+.link:hover{
+    color: (--text);
+    filter: invert(0.4);
+}
+
+.gap{
+    gap: 20px;
+}
+
+.highelevation{
+    --md-elevation-level: 5;
 }
