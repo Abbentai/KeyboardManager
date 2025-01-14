@@ -34,3 +34,9 @@ Route::post('/stores/create', [StoresController::class, 'store'])->name('stores.
 
 //Deletes a store from the db
 Route::delete('/stores/{id}', [StoresController::class, 'destroy'])->name('stores.destroy');
+
+//Gets the form for a user to edit a store's details
+Route::get('/stores/edit/{id}', [StoresController::class, 'edit'])->name('stores.edit');
+
+//Updates a particular store's details
+Route::put('/stores/update/{id}', [StoresController::class, 'update'])->name('stores.update');

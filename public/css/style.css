@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0px;
     background-color: var(--md-sys-color-background);
     font-family: "Quicksand", serif;
@@ -6,7 +6,7 @@ body{
 
 /* Navbar */
 
-.navbar{
+.navbar {
     background-color: var(--md-sys-color-primary-container);
     /* box-shadow: 0px 5px 10px 1px var(--md-sys-color-inverse-surface); */
     min-height: 80px;
@@ -19,14 +19,14 @@ body{
     position: relative;
 }
 
-.navbar a{
+.navbar a {
     font-size: 20pt;
     font-weight: bold;
     font-style: normal;
     color: var(--md-sys-color-outline);
 }
 
-.navbar a:hover{
+.navbar a:hover {
     color: var(--md-sys-color-outline-variant);
     cursor: pointer;
     scale: 103%;
@@ -35,7 +35,7 @@ body{
 
 
 /* Container */
-.mainContainer{
+.mainContainer {
     min-height: 50vh;
     display: flex;
     align-items: center;
@@ -45,7 +45,7 @@ body{
 }
 
 /* Divs */
-.card{
+.card {
     width: 39.5vw;
     min-width: 300px;
     border-radius: 10px;
@@ -60,12 +60,12 @@ body{
     --md-elevation-level: 3;
 }
 
-.cardsmall{
+.cardsmall {
     width: 20vw;
     min-width: 250px;
 }
 
-.opener{
+.opener {
     width: 100vw;
     min-height: 80vh;
     display: flex;
@@ -74,37 +74,49 @@ body{
     justify-content: center;
 }
 
-.cardTextBox{
+.cardTextBox {
     max-width: 70%;
 }
 
 
 /* Text Related Styling */
-h1, h2, h3, h4, p, a, span{
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+span {
     color: var(--text);
 }
 
-.title{
+.title {
     font-size: 45pt;
     color: var(--text);
     font-weight: bold;
     text-align: center;
 }
 
-.subtitle{
+.subtitle {
     font-size: 30pt;
     color: var(--text);
     text-align: center;
 
 }
 
-.subsubtitle{
+.subsubtitle {
     font-size: 20pt;
     color: var(--text);
     text-align: center;
 }
 
-.active{
+.text {
+    font-size: 15pt;
+    color: var(--text);
+    text-align: center;
+}
+
+.active {
     font-weight: bolder;
     color: var(--md-sys-color-outline-variant);
     filter: invert();
@@ -113,56 +125,108 @@ h1, h2, h3, h4, p, a, span{
 
 
 /* Buttons */
-.fabalign{
+.fabalign {
     position: fixed;
     top: 88%;
     right: 2%;
 }
 
+/* Animations */
+.fadeInDown {
+    animation: fadeInDown 0.75s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        -ms-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    } 
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none
+    }
+}
+
+.fadeOutUp {
+    animation: fadeOutUp 0.75s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        -ms-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    }
+}
+
+
 /* Misc */
 
-.icon{
+.icon {
     width: 48px;
     height: 48px;
     fill: var(--text);
 }
 
-.iconstroke{
+.iconstroke {
     width: 48px;
     height: 48px;
     stroke: var(--text);
 }
 
-.checkbox{
+.checkbox {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.center{
+.center {
     display: flex;
     align-items: center;
 }
 
-.flexcolumn{
+.flexcolumn {
     display: flex;
     flex-direction: column;
 }
 
-.flexrow{
+.flexrow {
     display: flex;
     flex-direction: row;
 }
 
-.link:hover{
+.link:hover {
     color: (--text);
     filter: invert(0.4);
 }
 
-.gap{
+.gap {
     gap: 20px;
 }
 
-.highelevation{
+.highelevation {
     --md-elevation-level: 5;
+}
+
+.notify {
+    background-color: var(--md-sys-color-tertiary-container);
+}
+
+.invert {
+    filter: invert();
 }

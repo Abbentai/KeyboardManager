@@ -20,6 +20,11 @@ class StoresController extends Controller
         return view('storeviews.create', compact('store'));
     }
 
+    public function edit($id){
+        $store = store::find($id);
+        return view('storeviews.edit', compact('store'));
+    }
+
     //Submits a new store to the database
     public function store(Request $request){
         $request->validate([
@@ -36,5 +41,18 @@ class StoresController extends Controller
         $store = Store::find($id);
         $store->delete();
         return back()->with('message', 'Contact has been deleted successfully'); //returns to previous page
+    }
+
+    public function update($id, Request $request){
+        $request->validate([
+            'name' => 'required',
+            'url' => 'url'
+        ]);
+        
+        $store = Store::find($id);
+        $store->update($request->all());
+
+        $message = "Store " . $store->name . " has been updated";
+        return redirect()->route('stores.index')->with($message);
     }
 }
