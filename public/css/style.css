@@ -4,6 +4,11 @@ body {
     font-family: "Quicksand", serif;
 }
 
+:root {
+    --md-ref-typeface-brand: 'Quicksand';
+    --md-ref-typeface-plain: 'Quicksand';
+  }
+
 /* Navbar */
 
 .navbar {
@@ -133,7 +138,7 @@ span {
 
 /* Animations */
 .fadeInDown {
-    animation: fadeInDown 0.75s ease-in-out;
+    animation: fadeInDown 0.5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -154,7 +159,7 @@ span {
 }
 
 .fadeOutUp {
-    animation: fadeOutUp 0.75s ease-in-out;
+    animation: fadeOutUp 0.5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -200,6 +205,11 @@ span {
     align-items: center;
 }
 
+.spaceBetween {
+    display: flex;
+    justify-content:start
+}
+
 .flexcolumn {
     display: flex;
     flex-direction: column;
@@ -219,6 +229,10 @@ span {
     gap: 20px;
 }
 
+.biggap {
+    gap: 10vw;
+}
+
 .highelevation {
     --md-elevation-level: 5;
 }
@@ -229,4 +243,34 @@ span {
 
 .invert {
     filter: invert();
+}
+
+.cardSelectable:hover{
+    scale: 105%;
+}
+
+.interactionButtons{
+    margin-top: 20px;
+}
+
+.marginBottom{
+    margin-bottom: 15px;
+}
+
+.smallInput{
+    width: 25%;
+}
+
+/* This is to remove the number arrows for the number inputs */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

@@ -24,9 +24,11 @@
 
 {{-- Material icons --}}
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
+
+{{-- Local Styling --}}
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-<link href="{{ asset('material-theme/css/lightgreen.css') }}" rel="stylesheet">
-<link href="{{ asset('material-theme/css/darkgreen.css') }}" rel="stylesheet">
+<link href="{{ asset('material-theme/css/lightpurple.css') }}" rel="stylesheet">
+<link href="{{ asset('material-theme/css/darkpurple.css') }}" rel="stylesheet">
 
 {{-- Navbar used throughout --}}
 <nav class="navbar highelevation">

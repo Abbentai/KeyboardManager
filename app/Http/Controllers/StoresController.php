@@ -20,6 +20,7 @@ class StoresController extends Controller
         return view('storeviews.create', compact('store'));
     }
 
+    //Returns the view for the store editing form for a specific store
     public function edit($id){
         $store = store::find($id);
         return view('storeviews.edit', compact('store'));
@@ -29,20 +30,23 @@ class StoresController extends Controller
     public function store(Request $request){
         $request->validate([
             'name' => 'required',
-            'url' => 'url'
+            'url' => 'required|url'
         ]);
         
         Store::create($request->all());
-        return redirect()->route('stores.index')->with('message', 'Store has been added');
+        $message = 'Store ' . $request->name .' has been added';
+        return redirect()->route('stores.index')->with('message', $message);
     }
 
     //Destroys the store depending on the id given
     public function destroy($id){
         $store = Store::find($id);
         $store->delete();
-        return back()->with('message', 'Contact has been deleted successfully'); //returns to previous page
+        $message = 'Store ' . $store->name .' has been deleted successfully';
+        return back()->with('message', $message); //returns to previous page
     }
 
+    //Updates an existing store in the database based on its id
     public function update($id, Request $request){
         $request->validate([
             'name' => 'required',
@@ -53,6 +57,6 @@ class StoresController extends Controller
         $store->update($request->all());
 
         $message = "Store " . $store->name . " has been updated";
-        return redirect()->route('stores.index')->with($message);
+        return redirect()->route('stores.index')->with('message', $message);
     }
 }

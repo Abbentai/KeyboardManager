@@ -4,7 +4,7 @@
     <h2 class="subtitle">Your Stores</h2>
 
     @if ($message = session('message'))
-    <div id="messageCard" class="card notify">
+    <div id="messageCard" class="card notify fadeInDown">
         <h3>{{$message}}</h3>
     </div>
     @endif
@@ -27,7 +27,7 @@
 
             {{-- Edit and Delete buttons --}}
 
-            <div class="flexrow center gap">
+            <div class="flexrow center gap interactionButtons">
                 {{-- Edit and Delete buttons --}}
                 <md-outlined-icon-button type="button" href="{{ route('stores.edit', $store->id) }}">
                     <md-icon>edit</md-icon>

@@ -64,6 +64,6 @@ function removeAfterTime(time) {
         messageCard.classList.add("fadeOutUp")
         setTimeout(() => {
             messageCard.remove()
-        }, 750);
+        }, 500);
     }, time);
 }
