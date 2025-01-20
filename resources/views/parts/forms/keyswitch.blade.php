@@ -1,5 +1,5 @@
 @php
-    $capitalPartName = strtoupper($partname[0]) . substr($partname, 1);
+    $capitalPartName = ucfirst($partname); //Capitalises first letter
     $part->keyboardID = $keyboardID;
 @endphp
 
@@ -13,14 +13,11 @@
         </md-outlined-text-field>
 
         <md-outlined-text-field label="Actuation Force (g)" required name="actuation_force" id="actuation_force"
-            inputmode=”numeric” suffix-text="g"> value="{{ old('actuation_force', $part->actuation_force) }}"
-            @error('actuation_force')
-                error
-            @enderror error-text="Actuation Force is required">
+            inputmode="numeric" suffix-text="g" value="{{ old('actuation_force', $part->actuation_force) }}"
+            @error('actuation_force') error @enderror error-text="Actuation Force is required">
             <md-icon slot="leading-icon">weight</md-icon>
         </md-outlined-text-field>
     </div>
-
 
     <div class="flexrow spaceBetween gap">
         <md-outlined-text-field label="Switch Type" required name="type" id="type"
@@ -29,35 +26,24 @@
         </md-outlined-text-field>
 
         <md-outlined-text-field label="Travel Distance (mm)" required name="travel_distance" id="travel_distance"
-            inputmode=”numeric” suffix-text="mm"> value="{{ old('travel_distance', $part->travel_distance) }}"
-            @error('travel_distance')
-                error
-            @enderror error-text="Travel Distance is required">
+            inputmode="numeric" suffix-text="mm" value="{{ old('travel_distance', $part->travel_distance) }}"
+            @error('travel_distance') error @enderror error-text="Travel Distance is required">
             <md-icon slot="leading-icon">straighten</md-icon>
         </md-outlined-text-field>
-
-
     </div>
-
 
     <div class="flexrow spaceBetween gap">
-        <md-outlined-text-field label="Quantity" required name="quantity" id="quantity" inputmode=”numeric”
-            suffix-text="x">
-            value="{{ old('quantity', $part->quantity) }}"
-            @error('quantity')
-                error
-            @enderror error-text="Quantity is required">
+        <md-outlined-text-field label="Quantity" required name="quantity" id="quantity" inputmode="numeric"
+            suffix-text="x" value="{{ old('quantity', $part->quantity) }}" @error('quantity') error @enderror
+            error-text="Quantity is required">
         </md-outlined-text-field>
 
-        <md-outlined-text-field label="Price" name="price" id="price" inputmode=”numeric” prefix-text="€">
-            value="{{ old('price', $part->price) }}"
-            @error('price')
-                error
-            @enderror error-text="Price cannot be less then 0.00">
-            <md-icon slot="leading-icon">weight</md-icon>
+        <md-outlined-text-field label="Price" name="price" id="price" inputmode="numeric" prefix-text="€"
+            value="{{ old('price', $part->price) }}" @error('price') error @enderror
+            error-text="Price cannot be less than 0.00">
+            <md-icon slot="leading-icon">attach_money</md-icon>
         </md-outlined-text-field>
     </div>
-
 
     <div class="flexrow spaceBetween gap">
         <md-outlined-select label="Store" name="store_id" required>
@@ -67,12 +53,12 @@
                     {{ $store->name }}
                 </md-select-option>
             @endforeach
-
         </md-outlined-select>
 
         <div class="checkbox">
             <p>Prelubed: </p>
-            <md-checkbox name="prelubed" value=1 @if (old('prelubed', $part->prelubed) == 1) checked @endif></md-checkbox>
+            <md-checkbox name="prelubed" value="1" @if (old('prelubed', $part->prelubed) == 1) checked @endif>
+            </md-checkbox>
         </div>
     </div>
 

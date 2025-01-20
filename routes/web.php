@@ -69,19 +69,19 @@ Route::put('/stores/update/{id}', [StoresController::class, 'update'])->name('st
 
 
 
-// Keyswitch Routes
+// Part Routes
 
-//Create new keyswitch
+//Create new part
 Route::get('/parts/create', [PartController::class, 'create'])->name('parts.create');
 
-//Store new keyswitch in db
+//Store new part in db
 Route::post('/parts/create', [PartController::class, 'store'])->name('parts.store');
 
-//Deletes a keyswitch from the db
+//Deletes a part from the db
 Route::delete('/parts/{id}', [PartController::class, 'destroy'])->name('parts.destroy');
 
-//Gets the form for a user to edit a keyswitch's details
-Route::get('/parts/edit/{id}', [PartController::class, 'edit'])->name('parts.edit');
+//Gets the form for a user to edit a part's details
+Route::get('/parts/edit', [PartController::class, 'edit'])->name('parts.edit');
 
-//Updates a particular keyswitch's details
+//Updates a particular part's details
 Route::put('/parts/update/{id}', [PartController::class, 'update'])->name('parts.update');

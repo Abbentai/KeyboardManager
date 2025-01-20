@@ -33,27 +33,46 @@ class PartController extends Controller
     }
 
     //Returns the view for the keyswitch editing form for a specific keyswitch
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $keyswitch = Keyswitch::find($id);
-        return view('parts.edit', compact('keyswitch'));
+        $part = $request->query('type');
+        $keyboardID = $request->query('keyboardID');
+        $partname = '';
+        $stores = Store::all();
+
+        if ($part == 'keyswitch') {
+            $part = Keyswitch::find($request->query('id'));
+
+            // Check if the keyswitch exists
+            if (!$part) {
+                return redirect()->back()->withErrors(['id' => 'Keyswitch not found']);
+            }
+
+            $partname = 'keyswitch';
+        }
+
+        return view('parts.edit', compact('partname', 'part', 'stores', 'keyboardID'));
     }
+
 
     //Submits a new keyswitch to the database and associates it with the current keyboard
     public function store(Request $request)
     {
-        $request->getValidators();
+
+        //Loads validator from function for the request
+        $validated = $request->validate($this->getValidators());
 
         //getting keyboard based on id and making sure it valid
         $keyboardID = $request->keyboardID;
         $keyboard = Keyboard::find($keyboardID);
 
         if (!$keyboard) {
-            return redirect()->back()->withErrors(['keyboardID' => 'Keyboard not found']);
+            return redirect();
         }
 
         //associating the part with the keyboards
         $keyswitch = Keyswitch::create($request->all());
+        $keyswitch->save();
         $keyboard->keyswitch_id = $keyswitch->id;
         $keyboard->save();
 
@@ -63,9 +82,19 @@ class PartController extends Controller
     }
 
     //Destroys the keyswitch depending on the id given
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $keyswitch = Keyswitch::find($id);
+        //Fetching keyboard from db and deleting the reference for the keyswtich
+        $keyboard = Keyboard::find($request->keyboardID);
+
+        if (!$keyboard) {
+            return redirect()->back();
+        }
+        $keyboard->keyswitch_id = null;
+        $keyboard->save();
+
+        //Deleting the keyswitch itself
+        $keyswitch = Keyswitch::find($request->id);
         $keyswitch->delete();
         $message = 'Keyswitch ' . $keyswitch->name . ' has been deleted successfully';
 
@@ -75,21 +104,20 @@ class PartController extends Controller
     //Updates an existing keyswitch in the database based on its id
     public function update($id, Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'url' => 'url'
-        ]);
+        $validated = $request->validate($this->getValidators());
+        $keyboardID = $request->keyboardID;
 
         $keyswitch = Keyswitch::find($id);
         $keyswitch->update($request->all());
 
         $message = "Keyswitch " . $keyswitch->name . " has been updated";
-        return redirect()->route('parts.index')->with('message', $message);
+        return redirect()->route('keyboards.view', ['id' => $keyboardID])
+            ->with('message', $message);
     }
 
-    private function getValidators()
+    public function getValidators()
     {
-        $validation = Validator::make(([
+        return [
             'name' => 'required',
             'actuation_force' => 'required|numeric',
             'travel_distance' => 'required|numeric',
@@ -98,8 +126,6 @@ class PartController extends Controller
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
             'store_id' => 'required',
-        ]));
-
-        return $validation;
+        ];
     }
 }

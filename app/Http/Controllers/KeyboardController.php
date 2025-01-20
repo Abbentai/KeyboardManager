@@ -68,6 +68,7 @@ class KeyboardController extends Controller
         $keyboard->update($request->all());
 
         $message = "Keyboard " . $keyboard->name . " has been updated";
-        return redirect()->route('keyboards.index')->with('message', $message);
+        // return view('keyboardviews.view', compact('keyboard'));
+        return redirect()->route('keyboards.view', $id)->with('message', $message);
     }
 }
